@@ -43,6 +43,10 @@ public class VendorController : MonoBehaviour
 
     public void BuyItem()
     {
-        PlayerController.instance.playerInventory.AddItem(type, index, 1);
+        if (PlayerController.instance.confetti > ItemLibrary.weaponLibrary[index].value)
+        {
+            PlayerController.instance.playerInventory.AddItem(type, index, 1);
+            PlayerController.instance.confetti -= ItemLibrary.weaponLibrary[index].value;
+        }
     }
 }
