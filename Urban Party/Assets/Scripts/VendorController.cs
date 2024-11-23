@@ -48,5 +48,9 @@ public class VendorController : MonoBehaviour
             PlayerController.instance.playerInventory.AddItem(type, index, 1);
             PlayerController.instance.confetti -= ItemLibrary.weaponLibrary[index].value;
         }
+        else
+        {
+            Debug.Log("Poor");
+        }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    public int confetti;
     public InventoryController playerInventory;
 
     private void Awake()
