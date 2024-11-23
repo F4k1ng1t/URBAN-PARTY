@@ -10,4 +10,8 @@ public class ItemLibrary : MonoBehaviour
     {
         weaponLibrary = gameObject.GetComponentsInChildren<WeaponData>();
     }
+    /* Weapondata order
+     * 0 - Slinky
+     * 1 - Blowout
+     */
 }

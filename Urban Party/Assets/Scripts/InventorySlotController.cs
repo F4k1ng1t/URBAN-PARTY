@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public enum ItemType
 {
+    None,
     Weapon,
     Armor
 }
@@ -15,9 +16,9 @@ public class InventorySlotController : MonoBehaviour
     public InventoryController parentInventory;
     public bool debugFill;
     public bool isFilled = false;
-    public ItemType type;
+    public ItemType type = ItemType.None;
     public Image itemImage;
-    public int libraryIndex;
+    public int libraryIndex = -1;
     public int quantity;
 
     private void Awake()
@@ -27,9 +28,9 @@ public class InventorySlotController : MonoBehaviour
 
     private void Start()
     {
-        if (debugFill)
+        if(type != ItemType.None && libraryIndex != -1)
         {
-            SetInventorySlot(ItemType.Weapon, 0, 1);
+            SetInventorySlot(type, libraryIndex, 1);
         }
     }
 

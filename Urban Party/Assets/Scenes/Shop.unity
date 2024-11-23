@@ -894,6 +894,8 @@ GameObject:
   - component: {fileID: 1663671820}
   - component: {fileID: 1663671819}
   - component: {fileID: 1663671818}
+  - component: {fileID: 1663671822}
+  - component: {fileID: 1663671821}
   m_Layer: 0
   m_Name: Library
   m_TagString: Untagged
@@ -945,6 +947,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1663671821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663671817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eaf1a7842709384a80452bdcc8d781a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Sticky Hand
+  damage: 5
+  speed: 4
+  value: 400
+  itemSprite: {fileID: 21300000, guid: dfa9b73ec1be4ec4195dda228b1a10f3, type: 3}
+--- !u!114 &1663671822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663671817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eaf1a7842709384a80452bdcc8d781a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Blowout
+  damage: 10
+  speed: 2
+  value: 400
+  itemSprite: {fileID: 21300000, guid: 58cc4ef7dd55a554e8b69de9135a6a3c, type: 3}
 --- !u!1001 &2306207606575281891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2430,6 +2466,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7295546750734527781, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295546750734527781, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
       propertyPath: debugFill
       value: 1
       objectReference: {fileID: 0}
@@ -2448,6 +2488,14 @@ PrefabInstance:
     - target: {fileID: 7317394987495309845, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342621249867507335, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342621249867507335, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
+      propertyPath: libraryIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7348365758874236600, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2664,6 +2712,14 @@ PrefabInstance:
     - target: {fileID: 8492100652915238671, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538469156896456038, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538469156896456038, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
+      propertyPath: libraryIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8566308792682499771, guid: d03983d83262edc43a6ce5224f7c6300, type: 3}
       propertyPath: m_AnchorMax.y
