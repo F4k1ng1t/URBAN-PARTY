@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class TurnBased : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int playerHealth;
+    public int turn;
+    public int turnthingyplaceholderidk;
+    public void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
