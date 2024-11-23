@@ -5,16 +5,13 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     private InventorySlotController[] slots;
-    public WeaponDisplay DataDisplay;
-    public PlayerController clientPlayer;
 
     [Header("For Merchant")]
     public bool vendorInventory;
-    public NPCController vendorController;
+    public static InventorySlotController hand;
 
     private void Start()
     {
-        DataDisplay = FindFirstObjectByType<WeaponDisplay>();
         slots = gameObject.GetComponentsInChildren<InventorySlotController>();
     }
 
@@ -25,22 +22,9 @@ public class InventoryController : MonoBehaviour
         {
             if (!slots[i].isFilled)
             {
-                if (isArmor)
-                {
-                    slots[i].SetInventorySlotArmor(index);
-                }
-                else
-                {
-                    slots[i].SetInventorySlot(index);
-                }
                 return;
             }
         }
         Debug.Log("Inventory Full");
-    }
-
-    public void SetClient(PlayerController client)
-    {
-        clientPlayer = client;
     }
 }
