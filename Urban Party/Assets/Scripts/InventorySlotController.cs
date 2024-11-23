@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public enum ItemType
 }
 public class InventorySlotController : MonoBehaviour
 {
+    public InventoryController parentInventory;
     public bool debugFill;
     public bool isFilled = false;
     public ItemType type;
@@ -80,19 +82,26 @@ public class InventorySlotController : MonoBehaviour
 
     public void OnItemSelect()
     {
-        //if a slot with a filled inventory slot is selected, place it into the players "hand"
-        if (InventoryController.hand == null && isFilled)
+        if (parentInventory.vendorInventory)
         {
-            InventoryController.hand = this;
+            VendorController.instance.SetItemToSell(type, libraryIndex);
         }
-        else if (InventoryController.hand != null)
+        else
         {
-            //if the player selects an empty slot, place the item there
-            if (!isFilled)
+            //if a slot with a filled inventory slot is selected, place it into the players "hand"
+            if (InventoryController.hand == null && isFilled)
             {
-                SetInventorySlot(InventoryController.hand);
-                InventoryController.hand.EmptyInventorySlot();
-                InventoryController.hand = null;
+                InventoryController.hand = this;
+            }
+            else if (InventoryController.hand != null)
+            {
+                //if the player selects an empty slot, place the item there
+                if (!isFilled)
+                {
+                    SetInventorySlot(InventoryController.hand);
+                    InventoryController.hand.EmptyInventorySlot();
+                    InventoryController.hand = null;
+                }
             }
         }
     }
