@@ -79,12 +79,12 @@ public class PlayerMovement : MonoBehaviour
         if (direction == Direction.left)
         {
             rb.AddForce(sidewaysForce * Vector2.left, 0);
-            playerSprite.localScale = new Vector3(-1, 1, 1);
+            //playerSprite.localScale = new Vector3(-1, 1, 1);
         }
         else if (direction == Direction.right)
         {
             rb.AddForce(sidewaysForce * Vector2.right, 0);
-            playerSprite.localScale = new Vector3(1, 1, 1);
+            //playerSprite.localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -127,5 +127,11 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         isFalling = false;
         isGrounded = false;
+    }
+
+    public enum Direction
+    {
+        left,
+        right,
     }
 }
