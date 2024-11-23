@@ -6,16 +6,30 @@ using UnityEngine.UI;
 
 public enum ItemType
 {
-
+    Weapon,
+    Armor
 }
 public class InventorySlotController : MonoBehaviour
 {
-
+    public bool debugFill;
     public bool isFilled = false;
     public ItemType type;
     public Image itemImage;
     public int libraryIndex;
     public int quantity;
+
+    private void Awake()
+    {
+        itemImage = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
+        if (debugFill)
+        {
+            SetInventorySlot(ItemType.Weapon, 0, 1);
+        }
+    }
 
     public void SetInventorySlot(ItemType addType, int addIndex, int addQuantity)
     {
@@ -28,6 +42,10 @@ public class InventorySlotController : MonoBehaviour
         libraryIndex = addIndex;
         quantity = addQuantity;
         isFilled = true;
+        if(type == ItemType.Weapon)
+        {
+            itemImage.sprite = ItemLibrary.weaponLibrary[libraryIndex].itemSprite;
+        }
     }
 
     /// <summary>
@@ -45,6 +63,11 @@ public class InventorySlotController : MonoBehaviour
         libraryIndex = other.libraryIndex;
         quantity = other.quantity;
         isFilled = true;
+
+        if (type == ItemType.Weapon)
+        {
+            itemImage.sprite = ItemLibrary.weaponLibrary[libraryIndex].itemSprite;
+        }
     }
 
     public void EmptyInventorySlot()

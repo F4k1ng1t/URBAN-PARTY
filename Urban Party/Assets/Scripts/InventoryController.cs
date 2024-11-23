@@ -5,9 +5,6 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     private InventorySlotController[] slots;
-
-    [Header("For Merchant")]
-    public bool vendorInventory;
     public static InventorySlotController hand;
 
     private void Start()
