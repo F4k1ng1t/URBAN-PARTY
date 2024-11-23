@@ -128,10 +128,4 @@ public class PlayerMovement : MonoBehaviour
         isFalling = false;
         isGrounded = false;
     }
-
-    public enum Direction
-    {
-        left,
-        right,
-    }
 }
