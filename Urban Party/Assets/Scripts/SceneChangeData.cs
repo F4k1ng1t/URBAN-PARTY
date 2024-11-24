@@ -9,6 +9,8 @@ public class SceneChangeData : MonoBehaviour
     public static Vector2 lastPosition = new Vector2(-186, -0.4f);
     public static string lastScene;
     public static SceneChangeData instance;
+    public int[] initAliveEnemies;
+    public static int[] AliveEnimies;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class SceneChangeData : MonoBehaviour
         instance = this;
         if (slotStorage == null)
         {
+            AliveEnimies = initAliveEnemies;
             slotStorage = new List<(ItemType type, int index, int quantity)>();
         }
         DontDestroyOnLoad(gameObject);
