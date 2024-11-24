@@ -18,5 +18,9 @@ public class InputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
             player.TryJump();
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            PlayerController.instance.playerInventory.gameObject.SetActive(!PlayerController.instance.playerInventory.gameObject.activeSelf);
+        }
     }
 }

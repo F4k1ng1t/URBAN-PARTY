@@ -8,6 +8,7 @@ public class ItemLibrary : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         weaponLibrary = gameObject.GetComponentsInChildren<WeaponData>();
     }
     /* Weapondata order
