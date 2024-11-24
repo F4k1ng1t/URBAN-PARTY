@@ -28,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    private void Start()
+    {
+        Debug.Log("FindRigidBody");
+        rb = gameObject.GetComponent<Rigidbody2D>();
+    }
 
     void FixedUpdate()
     {

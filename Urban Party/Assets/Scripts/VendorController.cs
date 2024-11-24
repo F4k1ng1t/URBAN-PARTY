@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VendorController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class VendorController : MonoBehaviour
     private ItemType type;
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private TextMeshProUGUI vendorText;
+    [SerializeField] private TextMeshProUGUI confettiText;
 
     private void Awake()
     {
@@ -21,6 +23,10 @@ public class VendorController : MonoBehaviour
             Destroy(this);
         }
         instance = this;
+
+        buttonText.text = "Buy";
+        vendorText.text = "";
+        confettiText.text = "Confetti: " + SceneChangeData.confetti;
     }
 
     public void SetItemToSell(ItemType setType, int setIndex)
@@ -43,14 +49,21 @@ public class VendorController : MonoBehaviour
 
     public void BuyItem()
     {
-        if (PlayerController.instance.confetti > ItemLibrary.weaponLibrary[index].value)
+        if (PlayerController.instance.confetti >= ItemLibrary.weaponLibrary[index].value)
         {
-            PlayerController.instance.playerInventory.AddItem(type, index, 1);
-            PlayerController.instance.confetti -= ItemLibrary.weaponLibrary[index].value;
+            SceneChangeData.confetti -= ItemLibrary.weaponLibrary[index].value;
+            confettiText.text = "Confetti: " + SceneChangeData.confetti;
+            SceneChangeData.StoreInList(ItemType.Weapon, index, 1);
         }
         else
         {
             Debug.Log("Poor");
         }
+    }
+
+    public void SceneReturn()
+    {
+
+        SceneManager.LoadScene(SceneChangeData.lastScene);
     }
 }
