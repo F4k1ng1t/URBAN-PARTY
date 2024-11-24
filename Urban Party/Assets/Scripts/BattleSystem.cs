@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public enum BattleStates { START, KHYETURN, LILOIDDTURN, TSAINETURN,ENEMYTURN, WIN, LOSE }
 public class BattleSystem : MonoBehaviour
 {
@@ -98,6 +100,9 @@ public class BattleSystem : MonoBehaviour
                 StartCoroutine(EnemyAttack(enemyUnit));
                 state = BattleStates.ENEMYTURN;
                 break;
+            case BattleStates.WIN:
+                StartCoroutine(Win());
+                break;
             default:
                 return;
         }
@@ -113,7 +118,7 @@ public class BattleSystem : MonoBehaviour
         {
             Destroy(enemyUnit.gameObject);
             state = BattleStates.WIN;
-            Win();
+            StartCoroutine(Win());
         }
     }
     IEnumerator EnemyAttack(Unit unit)
@@ -155,12 +160,17 @@ public class BattleSystem : MonoBehaviour
     IEnumerator Win()
     {
         flavorText.text = $"You win!!!";
+        SceneChangeData.confetti += 100;
         yield return new WaitForSeconds(2);
+        Debug.Log("Loading scene " + SceneChangeData.lastScene);
+        SceneManager.LoadScene(SceneChangeData.lastScene);
     }
     IEnumerator Lose()
     {
         flavorText.text = $"You lose...";
+        SceneChangeData.lastPosition = new Vector2(-186, -0.4f);
         yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("SampleScene");
     }
 
     public GameObject CreateEnemy()
