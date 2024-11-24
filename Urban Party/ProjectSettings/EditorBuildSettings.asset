@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: a010ae9abd3c248459cc332ae91a277c
+  - enabled: 1
+    path: Assets/Scenes/Thanksgiving.unity
+    guid: a0a1e2fd875334643a9cd6399a88c169
+  - enabled: 1
+    path: Assets/Scenes/Battle.unity
+    guid: 3f1ce90f92b03094ca9de9fc8e5ab476
   m_configObjects: {}
