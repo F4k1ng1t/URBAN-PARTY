@@ -19,13 +19,15 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            Destroy(gameObject);
+            /*
             SceneChangeData.lastPosition = PlayerController.instance.gameObject.transform.position;
             SceneChangeData.confetti = PlayerController.instance.confetti;
             SceneChangeData.lastScene = SceneManager.GetActiveScene().name;
             Debug.Log(PlayerController.instance.gameObject.transform.position);
             SceneChangeData.AliveEnimies[arrayIndex] = 0;
             SceneManager.LoadScene("Battle");
+            */
         }
     }
 }
