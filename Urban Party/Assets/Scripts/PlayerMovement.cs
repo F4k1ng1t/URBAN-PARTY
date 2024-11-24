@@ -90,8 +90,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void TryJump()
     {
-
-
         if (CurrentlyGrounded())
         {
             DoJump();
@@ -113,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
         if (hit)
         {
             bool onPlayer = hit.transform.gameObject.CompareTag("Player");
-
             
             return true;
         }
