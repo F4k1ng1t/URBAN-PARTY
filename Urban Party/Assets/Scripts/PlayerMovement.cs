@@ -20,6 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Transform GroundCheckPos;
+    
+    private SpriteRenderer sr;
+    [SerializeField]
+    private Sprite run;
+    [SerializeField]
+    private Sprite jump;
 
     private bool isFalling;
     private bool atMaxSpeed;
@@ -28,6 +34,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    private void Start()
+    {
+        Debug.Log("FindRigidBody");
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
+    }
 
     void FixedUpdate()
     {
@@ -69,21 +81,30 @@ public class PlayerMovement : MonoBehaviour
         {
             if (movingRight)
                 if (direction == Direction.right)
+                {
                     rb.AddForce(sidewaysForce * Vector2.right, 0);
+                }
             if (movingLeft)
                 if (direction == Direction.left)
+                {
                     rb.AddForce(sidewaysForce * Vector2.left, 0);
+
+                }
             return;
         }
 
         if (direction == Direction.left)
         {
             rb.AddForce(sidewaysForce * Vector2.left, 0);
+
+            transform.localScale = new Vector3(-0.16f, 0.16f, 0.16f);
             //playerSprite.localScale = new Vector3(-1, 1, 1);
         }
         else if (direction == Direction.right)
         {
             rb.AddForce(sidewaysForce * Vector2.right, 0);
+
+            transform.localScale = new Vector3(0.16f, 0.16f, 0.16f);
             //playerSprite.localScale = new Vector3(1, 1, 1);
         }
     }
@@ -111,11 +132,15 @@ public class PlayerMovement : MonoBehaviour
         if (hit)
         {
             bool onPlayer = hit.transform.gameObject.CompareTag("Player");
-            
+            sr.sprite = run;
+
             return true;
         }
         else
+        {
+            sr.sprite = jump;
             return false;
+        }
     }
 
     void DoJump()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    private InventorySlotController[] slots;
+    public InventorySlotController[] slots;
     public static InventorySlotController hand;
     public bool vendorInventory;
 
@@ -15,6 +15,11 @@ public class InventoryController : MonoBehaviour
         foreach (InventorySlotController slot in slots)
         {
             slot.parentInventory = this;
+        }
+        if (!vendorInventory)
+        {
+            Debug.Log("Execute");
+            SceneChangeData.SetInventoryFromList(this);
         }
     }
 
@@ -26,6 +31,7 @@ public class InventoryController : MonoBehaviour
             if (!slots[i].isFilled)
             {
                 slots[i].SetInventorySlot(addType, addIndex, addQuantity);
+                return;
             }
         }
         Debug.Log("Inventory Full");
