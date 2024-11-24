@@ -4,21 +4,38 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public BattleHUD hud;
+
     public string unitName;
 
     public int damage;
     
     public int maxHP;
-    public int  currentHP;
-    
-    public bool TakeDamage(int enemyDamage)
+    public int currentHP;
+
+    public int defense;
+
+    private void Start()
     {
-        currentHP -= enemyDamage;
-        if (currentHP >= 0)
+        
+    }
+    public bool TakeDamage(int amount)
+    {
+        currentHP -= (amount - defense);
+        hud.SetHP(currentHP);
+        if (currentHP <= 0)
         {
             currentHP = 0;
             return true;
         }
         return false;
+    }
+    public void Heal(int amount)
+    {
+        currentHP += amount;
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
     }
 }
