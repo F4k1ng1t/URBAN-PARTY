@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,12 +18,13 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
     public bool TakeDamage(int amount)
     {
         currentHP -= (amount - defense);
         hud.SetHP(currentHP);
+        Debug.Log($"{unitName} took damage");
         if (currentHP <= 0)
         {
             currentHP = 0;
