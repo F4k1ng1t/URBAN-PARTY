@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    
-    public int currentTurn;
-    
-    public GameObject BattleUI;
-    public void Start()
-    {
+    public string unitName;
 
-    }
-    public void AdvanceTurn()
+    public int damage;
+    
+    public int maxHP;
+    public int  currentHP;
+    
+    public bool TakeDamage(int enemyDamage)
     {
-
+        currentHP -= enemyDamage;
+        if (currentHP >= 0)
+        {
+            currentHP = 0;
+            return true;
+        }
+        return false;
     }
 }
