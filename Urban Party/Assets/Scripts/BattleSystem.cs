@@ -105,6 +105,7 @@ public class BattleSystem : MonoBehaviour
     }
     IEnumerator PlayerAttack(Unit unit)
     {
+        flavorText.text = $"{unit.unitName} attacks {enemyUnit.unitName} for {unit.damage} damage!";
         bool isDead = enemyUnit.TakeDamage(unit.damage);
         Debug.Log("This code runs");
         yield return new WaitForSeconds(2);
@@ -112,6 +113,7 @@ public class BattleSystem : MonoBehaviour
         {
             Destroy(enemyUnit.gameObject);
             state = BattleStates.WIN;
+            Win();
         }
     }
     IEnumerator EnemyAttack(Unit unit)
@@ -124,15 +126,15 @@ public class BattleSystem : MonoBehaviour
             {
                 case 1:
                     attackedUnit = Khye;
-                    flavorText.text = $"{unit.name} attacks Khye for {unit.damage} damage!";
+                    flavorText.text = $"{unit.unitName} attacks {attackedUnit.unitName} for {unit.damage} damage!";
                     break;
                 case 2:
                     attackedUnit = Tsaine;
-                    flavorText.text = $"{unit.name} attacks Khye for {unit.damage} damage!";
+                    flavorText.text = $"{unit.unitName} attacks {attackedUnit.unitName} for {unit.damage} damage!";
                     break;
                 case 3:
                     attackedUnit = Li_Loid;
-                    flavorText.text = $"{unit.name} attacks Khye for {unit.damage} damage!";
+                    flavorText.text = $"{unit.unitName} attacks {attackedUnit.unitName} for {unit.damage} damage!";
                     break;
             }
             Debug.Log("working");
