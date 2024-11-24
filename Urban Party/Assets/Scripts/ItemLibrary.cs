@@ -6,8 +6,12 @@ public class ItemLibrary : MonoBehaviour
 {
     public static WeaponData[] weaponLibrary;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         weaponLibrary = gameObject.GetComponentsInChildren<WeaponData>();
     }
+    /* Weapondata order
+     * 0 - Slinky
+     * 1 - Blowout
+     */
 }
